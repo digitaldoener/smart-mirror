@@ -185,7 +185,7 @@
         // Map the results to an array
         var SpeechRecognitionResult = event.results[event.resultIndex];
         var results = [];
-        var finalResults = false
+        var finalResults = false;
         for (var k = 0; k<SpeechRecognitionResult.length; k++) {
           if(SpeechRecognitionResult.isFinal){
             finalResults = true;
@@ -381,7 +381,7 @@
             if (debugState) {
               root.console.log('Can not register command: %c'+phrase, debugStyle);
             }
-            continue;
+
           }
         }
       }

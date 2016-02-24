@@ -845,7 +845,7 @@ RRule.prototype = {
                 before: before,
                 after: after,
                 inc: inc
-            }
+            };
 
         if (iterator) {
             return this._iter(
@@ -1508,7 +1508,7 @@ Iterinfo.prototype.easter = function(y, offset) {
         yearStart = Date.UTC(y, 0, 1);
 
     return [ Math.ceil((date - yearStart) / (1000 * 60 * 60 * 24)) ];
-}
+};
 
 Iterinfo.prototype.rebuild = function(year, month) {
 

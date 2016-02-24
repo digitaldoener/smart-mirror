@@ -9,7 +9,7 @@
     service.getCalendarEvents = function() {
       service.events = [];
       return loadFile(config.calendar.icals);
-    }
+    };
 
     var loadFile = function(urls) {
       var promises = [];
@@ -23,7 +23,7 @@
           parseICAL(data[i].data);
         }
       });
-    }
+    };
 
     var makeDate = function(type, ical_date) {
         if(ical_date.endsWith('Z')){
@@ -35,7 +35,7 @@
         } else {
             return moment(ical_date, 'YYYYMMDD');
         }
-    }
+    };
 
     var parseICAL = function(data) {
       //Ensure cal is empty
@@ -120,7 +120,7 @@
       }
       //Add all of the extracted events to the CalendarService
       service.events.push.apply(service.events, events);
-    }
+    };
 
     var contains = function(input, obj) {
       var i = input.length;
@@ -133,7 +133,7 @@
         }
       }
       return false;
-    }
+    };
 
     Array.prototype.contains = function(obj) {
         var i = this.length;
@@ -143,11 +143,11 @@
             }
         }
         return false;
-    }
+    };
 
     service.getEvents = function(events) {
       return service.events;
-    }
+    };
 
     service.getFutureEvents = function() {
       var future_events = [],
@@ -163,7 +163,7 @@
       });
       future_events = sortAscending(future_events);
       return future_events.slice(0, config.calendar.maxResults);
-    }
+    };
 
     var sortAscending = function(events) {
       return events.sort(function(a, b) {
@@ -178,7 +178,7 @@
           return 1;
         }
       });
-    }
+    };
 
     service.getPastEvents = function(events) {
       var past_events = [],
@@ -191,7 +191,7 @@
         }
       });
       return past_events.reverse();
-    }
+    };
 
     return service;
   }
