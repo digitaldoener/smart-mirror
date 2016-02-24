@@ -16,11 +16,11 @@
             .success(function (data, status, headers) {
                 console.log(data);
             })
-        }
+        };
 
         //Detect any kind of target color
         function deturmineUpdates(spokenWords){
-            console.log("Spoken Words:", spokenWords)
+            console.log("Spoken Words:", spokenWords);
             var update = {};
 
             update["transitiontime"] = 10;
