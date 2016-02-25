@@ -1,10 +1,10 @@
 var config = {
     // Language for the mirror (currently not implemented)
     language: "en", // not used yet
-    greeting: ["Hi, Andi!", "Hi, sexy"], // An array of greetings to randomly choose from
+    greeting: ["Hi, sexy"], // An array of greetings to randomly choose from
     // forecast.io
     forecast: {
-        key: "02f5947eb30d855153eedefb91ae233a", // Your forecast.io api key
+        key: "", // Your forecast.io api key
         units: "auto" // See forecast.io documentation if you are getting the wrong units
     },
     // Calendar (An array of iCals)

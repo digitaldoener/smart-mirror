@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     function WeatherService($http) {
@@ -6,19 +6,19 @@
         service.forecast = null;
         var geoloc = null;
 
-        service.init = function(geoposition) {
+        service.init = function (geoposition) {
             geoloc = geoposition;
-            return $http.jsonp('https://api.forecast.io/forecast/'+config.forecast.key+'/'+
-                    geoposition.coords.latitude+','+geoposition.coords.longitude+'?units=' + 
+            return $http.jsonp('https://api.forecast.io/forecast/' + config.forecast.key + '/' +
+                    geoposition.coords.latitude + ',' + geoposition.coords.longitude + '?units=' +
                     config.forecast.units + "&callback=JSON_CALLBACK")
-                .then(function(response) {
+                .then(function (response) {
                     return service.forecast = response;
                 });
         };
 
         //Returns the current forecast along with high and low tempratures for the current day
-        service.currentForecast = function() {
-            if(service.forecast === null){
+        service.currentForecast = function () {
+            if (service.forecast === null) {
                 return null;
             }
             service.forecast.data.currently.day = moment.unix(service.forecast.data.currently.time).format('ddd');
@@ -27,8 +27,8 @@
             return service.forecast.data.currently;
         };
 
-        service.weeklyForecast = function(){
-            if(service.forecast === null){
+        service.weeklyForecast = function () {
+            if (service.forecast === null) {
                 return null;
             }
             // Add human readable info to info
@@ -40,19 +40,19 @@
             }
             return service.forecast.data.daily;
         };
-		
-        service.hourlyForecast = function() {
-            if(service.forecast === null){
+
+        service.hourlyForecast = function () {
+            if (service.forecast === null) {
                 return null;
             }
             service.forecast.data.hourly.day = moment.unix(service.forecast.data.hourly.time).format('ddd');
             return service.forecast.data.hourly;
         };
-		
-        service.refreshWeather = function(){
+
+        service.refreshWeather = function () {
             return service.init(geoloc);
         };
-        
+
         return service;
     }
 

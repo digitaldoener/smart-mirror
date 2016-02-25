@@ -56,13 +56,16 @@ app.on('ready', function () {
     // Create the browser window.
     mainWindow = new BrowserWindow(browserWindowOptions);
 
-    // and load the index.html of the app.
-    mainWindow.loadUrl('file://' + __dirname + '/index.html');
+    var indexFile = 'index.html';
 
     // Open the DevTools if run with "npm start dev"
     if (process.argv[2] == "dev") {
+        indexFile = 'index.dev.html';
         mainWindow.webContents.openDevTools();
     }
+
+    // and load the index.html of the app.
+    mainWindow.loadUrl('file://' + __dirname + '/' + indexFile);
 
 
     // Emitted when the window is closed.
